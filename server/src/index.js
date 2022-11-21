@@ -45,7 +45,8 @@ async function startApolloServer(typeDefs, resolvers) {
   await server.start();
   server.applyMiddleware({ app });
 
-  const BUILD_PATH = [ '../../client', 'build' ]
+  const BUILD_PATH = [ '../../client', 'build' ];
+  const PORT = process.env.PORT || 4000;
 
   app.use(express.static( path.join(__dirname, ...BUILD_PATH)));
   app.use(express.static('public'))
@@ -58,8 +59,8 @@ async function startApolloServer(typeDefs, resolvers) {
     res.sendFile(path.join(__dirname, ...BUILD_PATH, 'index.html'))
   })
 
-  await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
+  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
 }
 
 startApolloServer(typeDefs, resolvers);
