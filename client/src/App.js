@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Container, CssBaseline, Box } from '@mui/material';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Navigation } from './components';
 import { Home, Settings, Recommend } from './pages';
 import { AppContext } from './providers/appContext';
@@ -13,11 +13,14 @@ import {
   ApolloLink,
   from
 } from "@apollo/client";
+import getUri from './utils/getUri';
+
+
 
 
 function App() {
   const { state } = useContext(AppContext);
-  const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
+  const httpLink = new HttpLink({ uri: getUri(process.env.NODE_ENV) });
   const localeMiddleware = new ApolloLink((operation, forward) => {
     const customHeaders = operation
       .getContext()

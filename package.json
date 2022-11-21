@@ -6,11 +6,17 @@
   "scripts": {
     "start": "node ./server/src/index.js",
     "build": "cd client && yarn build",
-    "install": "cd client && yarn && cd ../server && yarn"
+    "install": "cd client && yarn && cd ../server && yarn",
+    "server": "cd server && yarn dev:server",
+    "client": "cd client && yarn start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
   "engines": {
     "node": "18.x"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
