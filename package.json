@@ -1,0 +1,14 @@
+{
+  "name": "movies-recommendation",
+  "version": "1.0.0",
+  "description": "Movies recommendation demo",
+  "main": "./server/src/index.js",
+  "scripts": {
+    "start": "node ./server/src/index.js"
+  },
+  "author": "Vitalii Bondarenko",
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
+}
