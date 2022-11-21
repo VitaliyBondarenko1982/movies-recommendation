@@ -11,12 +11,9 @@ import {
   ApolloProvider,
   HttpLink,
   ApolloLink,
-  from
+  from,
 } from "@apollo/client";
 import getUri from './utils/getUri';
-
-
-
 
 function App() {
   const { state } = useContext(AppContext);
