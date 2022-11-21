@@ -4,3 +4,4 @@ client/node_modules
 server/node_modules
 client/.idea
 server/.idea
+client/build

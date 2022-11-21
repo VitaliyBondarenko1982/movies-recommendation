@@ -4,7 +4,9 @@
   "description": "Movies recommendation demo",
   "main": "./server/src/index.js",
   "scripts": {
-    "start": "node ./server/src/index.js"
+    "start": "node ./server/src/index.js",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install && cd ../server && npm install"
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
