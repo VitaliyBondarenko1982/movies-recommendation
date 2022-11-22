@@ -10,14 +10,14 @@ const {
 
 
 
-const Query = require('./resolvers/Query');
+const Query = require('./src/resolvers/Query');
 
 const resolvers = {
   Query
 }
 
 const typeDefs = fs.readFileSync(
-  path.join(__dirname, 'schema.graphql'),
+  path.join(__dirname, 'src', 'schema.graphql'),
   'utf8'
 );
 
@@ -45,7 +45,7 @@ async function startApolloServer(typeDefs, resolvers) {
   await server.start();
   server.applyMiddleware({ app });
 
-  const BUILD_PATH = [ '../../client', 'build' ];
+  const BUILD_PATH = [ 'client', 'build' ];
   const PORT = process.env.PORT || 4000;
 
   if (process.env.NODE_ENV !== 'development') {
