@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "music-album",
+  "name": "movies-recommendation",
   "builds": [
     { "src": "./server/src/index.js", "use": "@vercel/node" }
   ],
