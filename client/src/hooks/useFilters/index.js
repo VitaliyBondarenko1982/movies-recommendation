@@ -6,7 +6,7 @@ export const useFilters = () => {
     page: 1,
     sortBy: 'popularity',
     sortDirection: SORT_DIRECTION.DESC,
-    includeAdult: true,
+    includeAdult: false,
   });
 
   const setPage = useCallback((page) => {

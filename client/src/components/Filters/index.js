@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import {
   SortField,
   SortDirectionField,
-  AdultField,
   YearField,
   SubmitField,
   ReleaseYearField,
@@ -43,8 +42,6 @@ const Filters = ({ onSubmit, initialValues }) => {
                 <Box mr={3}>
                   <GenreField data={data}/>
                 </Box>
-
-                <AdultField />
               </Box>
               <Box sx={{display: 'flex', alignItems: 'center'}}>
                 <Box mr={3}>
