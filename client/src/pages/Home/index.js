@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { Box, Grid, Pagination, Paper } from '@mui/material';
 import { useQuery } from '@apollo/client';
 
-import { MovieCard, SelectedMoviesSection } from '../../components';
+import { MovieCard, SelectedMoviesSection, Filters } from '../../components';
 import { getMoviesQuery } from './queries';
-import { useMovies } from '../../hooks'
+import { useFilters, useMovies } from '../../hooks';
 
 const Home = () => {
-  const [page, setPage] = useState(1);
-  const { loading, error, data } = useQuery(getMoviesQuery, { variables: { page }});
-
+  const { filter, setPage, setFilter } = useFilters();
+  const { loading, error, data } = useQuery(getMoviesQuery, { variables: { filter }});
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
   const paginationHandler = (_, page) => {
@@ -22,18 +21,23 @@ const Home = () => {
 
   const pagesCount = data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
 
+  const onSubmit = (data) => {
+    console.log(data)
+    setFilter(data);
+  }
+
   return (
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper>
-            Filters section
+           <Filters onSubmit={onSubmit} initialValues={filter}/>
           </Paper>
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper>
             <Box sx={{ flexGrow: 1, padding: 1 }}>
-              {loading && page === 1 && <div>Loading...</div> }
+              {loading && filter.page === 1 && <div>Loading...</div> }
               {data && (
                 <Grid container spacing={2}>
                   {data.movies.results.map(movie => (
@@ -47,7 +51,7 @@ const Home = () => {
             <Box mt={2} pb={2} sx={{ display: 'flex', justifyContent: 'center' }}>
               <Pagination
                 count={pagesCount}
-                page={page}
+                page={filter.page}
                 onChange={paginationHandler}
               />
             </Box>
