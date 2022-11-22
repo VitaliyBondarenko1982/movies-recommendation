@@ -7,10 +7,7 @@
   "scripts": {
     "dev:server": "nodemon index.js",
     "start": "node index.js",
-    "build": "cd client && yarn build",
-    "install:server": "yarn",
-    "install:client": "cd client && yarn",
-    "install": "cd client && yarn",
+    "build": "cd client && yarn && yarn build",
     "server": "yarn dev:server",
     "client": "cd client && yarn start",
     "dev": "NODE_ENV=development concurrently \"yarn server\" \"yarn client\"",
