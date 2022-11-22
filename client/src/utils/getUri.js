@@ -1,5 +1,5 @@
-const getUri = (mode) => {
-  return mode === 'development' ? 'http://localhost:4000/graphql' : 'https://agile-mountain-16908.herokuapp.com/graphql';
+const getUri = () => {
+  return process.env.NODE_ENV === 'development' ? 'http://localhost:4000/graphql' : `${window.location.origin}/graphql`;
 }
 
 export default getUri;
