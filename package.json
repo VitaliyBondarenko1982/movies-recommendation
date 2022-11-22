@@ -2,6 +2,7 @@
   "name": "movies-recommendation",
   "version": "1.0.0",
   "description": "Movies recommendation demo",
+  "homepage": "https://movies-recommendation.vercel.app/",
   "main": "index.js",
   "scripts": {
     "dev:server": "nodemon index.js",
