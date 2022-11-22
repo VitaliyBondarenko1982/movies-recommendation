@@ -1,5 +1,4 @@
 {
-  "name": "movies-recommendation",
   "rewrites": [
     { "source": ".*", "destination": "/movies" }
   ]
