@@ -48,7 +48,7 @@ async function startApolloServer(typeDefs, resolvers) {
   const BUILD_PATH = [ 'client', 'build' ];
   const PORT = process.env.PORT || 4000;
 
-  console.log({ NODE_ENV: process.env.NODE_ENV });
+  console.log({ NODE_ENV: process.env.NODE_ENV, BUILD_PATH });
 
   if (process.env.NODE_ENV !== 'development') {
     app.use(express.static( path.join(__dirname, ...BUILD_PATH)));
