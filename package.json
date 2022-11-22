@@ -11,7 +11,7 @@
     "install": "cd client && yarn",
     "server": "yarn dev:server",
     "client": "cd client && yarn start",
-    "dev": "concurrently \"yarn server\" \"yarn client\""
+    "dev": "NODE_ENV=development concurrently \"yarn server\" \"yarn client\""
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
