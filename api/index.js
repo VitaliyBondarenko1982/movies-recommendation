@@ -8,14 +8,14 @@ const {
   ApolloServerPluginLandingPageLocalDefault
 } = require('apollo-server-core');
 
-const Query = require('../src/resolvers/Query');
+const Query = require('./src/resolvers/Query');
 
 const resolvers = {
   Query
 }
 
 const typeDefs = fs.readFileSync(
-  path.join(__dirname, '../src', 'schema.graphql'),
+  path.join(__dirname, 'src', 'schema.graphql'),
   'utf8'
 );
 
