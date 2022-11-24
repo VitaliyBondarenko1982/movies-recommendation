@@ -45,7 +45,7 @@ const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
     const ids = selectedMovies.map(({ id }) => id);
     const listNameUpdated = listName.split(' ').join('_');
 
-    const link = `${window.location.host}/recommend?title=${listName}&locale=${state.locale}&ids=${ids.join()}`;
+    const link = `${window.location.host}/recommend?title=${listNameUpdated}&locale=${state.locale}&ids=${ids.join()}`;
 
     setLink(link);
     setTitle(listName);

@@ -39,7 +39,7 @@ const Navigation = () => {
       type: 'setLocale',
       locale
     })
-  }, []);
+  }, [dispatch]);
 
   const list = (
     <Box
