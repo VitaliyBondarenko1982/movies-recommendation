@@ -15,7 +15,7 @@
       {
         "src": "/api/(.*)",
         "headers": { "cache-control": "s-maxage=0" },
-        "dest": "api/src/app.js"
+        "dest": "/api/app.js"
       },
       {
         "src": "/static/(.*)",
