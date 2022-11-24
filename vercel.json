@@ -11,7 +11,17 @@
       "config": { "distDir": "build" }
     }
   ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" }
+  "routes": [
+      {
+        "src": "/api/(.*)",
+        "headers": { "cache-control": "s-maxage=0" },
+        "dest": "api/src/app.js"
+      },
+      {
+        "src": "/static/(.*)",
+        "headers": { "cache-control": "s-maxage=31536000, immutable" },
+        "dest": "client/static/$1"
+      },
+      { "src": "/(.*)", "dest": "client/index.html" }
   ]
 }
