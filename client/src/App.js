@@ -55,8 +55,8 @@ function App() {
             <Routes>
               <Route path='/'>
                 <Route index element={<Home />} />
-                <Route path='/api/settings' element={<Settings />} />
-                <Route path='/api/recommend' element={<Recommend />} />
+                <Route path='/settings' element={<Settings />} />
+                <Route path='/recommend' element={<Recommend />} />
               </Route>
             </Routes>
           </Container>
