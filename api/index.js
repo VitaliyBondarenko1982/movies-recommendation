@@ -47,14 +47,14 @@ async function startApolloServer(typeDefs, resolvers) {
   const PORT = process.env.PORT || process.env.REACT_APP_WEBSITE_PORT || 4000;
 
   app.use(express.static( path.join(__dirname, ...BUILD_PATH)));
-  app.use(express.static('public'))
+  app.use(express.static('public'));
+
   app.get('*', (req, res) => {
+    console.log({ path: req.path});
     res.sendFile(path.join(__dirname, ...BUILD_PATH, 'index.html'))
   })
 
   await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
-
-  console.log({ graphqlPath: server.graphqlPath })
 
   await console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
 }
