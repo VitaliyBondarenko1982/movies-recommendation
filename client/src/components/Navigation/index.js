@@ -27,7 +27,7 @@ import { FormattedMessage } from "react-intl";
 import translate from '../../utils/translate';
 
 const navigation = [
-  { title: translate('navigation.settings'), icon: <SettingsIcon />, path: '/settings' }
+  { title: translate('navigation.settings'), icon: <SettingsIcon />, path: '/api/settings' }
 ]
 
 const Navigation = () => {
