@@ -5,12 +5,11 @@
   "homepage": "https://movies-recommendation.vercel.app/",
   "main": "api/index.js",
   "scripts": {
-    "start": "node api/index.js",
+    "start": "node server/index.js",
     "build": "cd client && yarn && yarn build",
-    "client": "cd client && yarn start",
-    "api-server": "node api/index.js",
-    "api-server:dev": "nodemon api/index.js",
-    "dev": "NODE_ENV=development concurrently \"yarn api-server:dev\" \"yarn client\"",
+    "server:dev": "nodemon server/index.js",
+    "client:dev": "cd client && yarn start",
+    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\"",
     "vercel:deploy": "vercel build && vercel deploy --prebuilt"
   },
   "author": "Vitalii Bondarenko",
