@@ -59,6 +59,6 @@ async function startApolloServer(typeDefs, resolvers) {
 
 startApolloServer(typeDefs, resolvers);
 
-return httpServer;
+module.exports = httpServer;
 
 
