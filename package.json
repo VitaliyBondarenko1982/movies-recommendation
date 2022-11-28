@@ -7,11 +7,11 @@
   "scripts": {
     "start": "node api/index.js",
     "build": "cd client && yarn && yarn build",
-    "client": "cd client && yarn start",
-    "api-server": "node api/index.js",
-    "api-server:dev": "nodemon api/index.js",
-    "dev": "NODE_ENV=development concurrently \"yarn api-server:dev\" \"yarn client\"",
-    "vercel:deploy": "vercel build && vercel deploy --prebuilt"
+    "client:dev": "cd client && yarn start",
+    "server:dev": "nodemon api/index.js",
+    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\"",
+    "deploy:preview": "vercel build && vercel deploy --prebuilt",
+    "deploy:prod": "vercel --prod"
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
