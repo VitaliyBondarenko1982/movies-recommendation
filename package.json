@@ -9,9 +9,7 @@
     "build": "cd client && yarn && yarn build",
     "client:dev": "cd client && yarn start",
     "server:dev": "nodemon api/index.js",
-    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\"",
-    "deploy:preview": "vercel build && vercel deploy --prebuilt",
-    "deploy:prod": "vercel --prod"
+    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\""
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
