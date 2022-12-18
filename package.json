@@ -9,7 +9,8 @@
     "build": "cd client && yarn && yarn build",
     "client:dev": "cd client && yarn start",
     "server:dev": "nodemon api/index.js",
-    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\""
+    "dev": "NODE_ENV=development concurrently \"yarn server:dev\" \"yarn client:dev\"",
+    "lint": "eslint src/**/*.js"
   },
   "author": "Vitalii Bondarenko",
   "license": "MIT",
@@ -26,7 +27,21 @@
     "graphql": "^16.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/eslint-parser": "^7.19.1",
     "concurrently": "^7.6.0",
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^2.8.1",
     "nodemon": "^2.0.16"
   }
 }

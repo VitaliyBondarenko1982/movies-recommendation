@@ -1,7 +1,13 @@
-node_modules
+# IDE
 .idea
-client/node_modules
-client/.idea
-server/.idea
-client/build
+.vscode
+
+# Node
+node_modules
+
+# MacOS
+.DS_Store
+
+# Generated files
+build
 .vercel
