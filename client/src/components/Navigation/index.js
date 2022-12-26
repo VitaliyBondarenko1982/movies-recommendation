@@ -14,40 +14,44 @@ import {
   ListItemIcon,
   ListItemText,
   Hidden,
-  Link
+  Link,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
-  Settings as SettingsIcon
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
+import { FormattedMessage } from 'react-intl';
 import { AppContext } from '../../providers/appContext';
 import { LOCALES } from '../../constants';
-import { FormattedMessage } from "react-intl";
 
 import translate from '../../utils/translate';
 
 const navigation = [
-  { title: translate('navigation.settings'), icon: <SettingsIcon />, path: '/settings' }
-]
+  {
+    title: translate('navigation.settings'),
+    icon: <SettingsIcon />,
+    path: '/settings',
+  },
+];
 
 const Navigation = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { state, dispatch } = useContext(AppContext);
 
-  const setLanguage = useCallback((locale) => {
-    dispatch({
-      type: 'setLocale',
-      locale
-    })
-  }, [dispatch]);
+  const setLanguage = useCallback(
+    locale => {
+      dispatch({
+        type: 'setLocale',
+        locale,
+      });
+    },
+    [dispatch],
+  );
 
   const list = (
-    <Box
-      sx={{ width: 250 }}
-      role="presentation"
-    >
+    <Box sx={{ width: 250 }} role="presentation">
       <List>
-        {navigation.map((item) => (
+        {navigation.map(item => (
           <Link
             key={item.title}
             to={item.path}
@@ -56,9 +60,7 @@ const Navigation = () => {
           >
             <ListItem key={item.title} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {item.icon}
-                </ListItemIcon>
+                <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={translate('navigation.settings')} />
               </ListItemButton>
             </ListItem>
@@ -84,32 +86,36 @@ const Navigation = () => {
               <MenuIcon open={false} />
             </IconButton>
           </Hidden>
-          <Link to='/' component={RouterLink} sx={{ flexGrow: 1 }}>
+          <Link to="/" component={RouterLink} sx={{ flexGrow: 1 }}>
             <Typography sx={{ color: 'white' }}>
-                <FormattedMessage id="navigation.home" />
+              <FormattedMessage id="navigation.home" />
             </Typography>
           </Link>
           <Box>
             {state.locale}
-            <Button disabled={state.locale === LOCALES.ENGLISH}
-                    sx={{ my: 2, color: 'white' }}
-                    onClick={() => setLanguage(LOCALES.ENGLISH)}>
+            <Button
+              disabled={state.locale === LOCALES.ENGLISH}
+              sx={{ my: 2, color: 'white' }}
+              onClick={() => setLanguage(LOCALES.ENGLISH)}
+            >
               ENGLISH
             </Button>
 
-            <Button disabled={state.locale === LOCALES.UKRAINIAN}
-                    sx={{ my: 2, color: 'white'}}
-                    onClick={() => setLanguage(LOCALES.UKRAINIAN)}>
+            <Button
+              disabled={state.locale === LOCALES.UKRAINIAN}
+              sx={{ my: 2, color: 'white' }}
+              onClick={() => setLanguage(LOCALES.UKRAINIAN)}
+            >
               Українська
             </Button>
           </Box>
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: 'none', lg: 'flex', justifyContent: 'end'}
+              display: { xs: 'none', lg: 'flex', justifyContent: 'end' },
             }}
           >
-            {navigation.map((page) => (
+            {navigation.map(page => (
               <Link key={page.title} to={page.path} component={RouterLink}>
                 <Button
                   key={page.title}
@@ -133,6 +139,6 @@ const Navigation = () => {
       </Drawer>
     </Box>
   );
-}
+};
 
 export default Navigation;

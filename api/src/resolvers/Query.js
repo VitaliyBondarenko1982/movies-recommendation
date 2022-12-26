@@ -3,7 +3,7 @@ const { Movie } = require('../modules/movies/entities/Movie');
 const { getList } = require('../modules/genres');
 
 async function movies(parent, args, { locale }) {
-  return await discoverMovie(args.filter, locale);
+  return discoverMovie(args.filter, locale);
 }
 
 async function moviesByIds(parent, { ids }, { locale }) {
@@ -13,13 +13,12 @@ async function moviesByIds(parent, { ids }, { locale }) {
   return data.map(movie => new Movie(movie.data));
 }
 
-async function genres(_, {}, {locale}) {
-  return await getList(locale)
+async function genres(_, __, { locale }) {
+  return getList(locale);
 }
-
 
 module.exports = {
   movies,
   moviesByIds,
   genres,
-}
+};

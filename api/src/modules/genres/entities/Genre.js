@@ -6,5 +6,5 @@ class Genre {
 }
 
 module.exports = {
-  Genre
-}
+  Genre,
+};

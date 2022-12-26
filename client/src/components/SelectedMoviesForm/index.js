@@ -1,25 +1,21 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form'
-import {
-  Paper,
-  InputBase,
-  Divider,
-  IconButton
-} from '@mui/material';
+import PropTypes from 'prop-types';
+import { Form, Field } from 'react-final-form';
+import { Paper, InputBase, Divider, IconButton } from '@mui/material';
 import { FormattedMessage } from 'react-intl';
-
 
 import { Check as CheckIcon } from '@mui/icons-material';
 
 const SelectedMoviesForm = ({ onSubmit }) => {
   const validate = values => {
-    const errors = {}
+    const errors = {};
+
     if (!values.listName) {
-      errors.listName = 'Field is required'
+      errors.listName = 'Field is required';
     }
 
-    return errors
-  }
+    return errors;
+  };
 
   return (
     <Form
@@ -27,33 +23,40 @@ const SelectedMoviesForm = ({ onSubmit }) => {
       validate={validate}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
-          <Paper
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
-          >
+          <Paper sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}>
             <Field
               name="listName"
-              render={({ input, meta }) => (
+              render={({ input }) => (
                 <FormattedMessage id="put_the_list_name">
-                  {placeholder =>
+                  {placeholder => (
                     <InputBase
                       sx={{ ml: 1, flex: 1 }}
                       placeholder={placeholder}
                       inputProps={{ 'aria-label': 'put list name' }}
                       {...input}
                     />
-                  }
+                  )}
                 </FormattedMessage>
               )}
             />
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton type="submit" color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <IconButton
+              type="submit"
+              color="primary"
+              sx={{ p: '10px' }}
+              aria-label="directions"
+            >
               <CheckIcon />
             </IconButton>
           </Paper>
         </form>
-        )}
+      )}
     />
   );
+};
+
+SelectedMoviesForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SelectedMoviesForm;

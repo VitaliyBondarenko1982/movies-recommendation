@@ -1,7 +1,6 @@
 const { format } = require('date-fns');
 const { IMAGE_BASE_PATH } = require('../../../config');
 
-
 class Movie {
   constructor(movie) {
     this.movie = movie;
@@ -26,5 +25,5 @@ class Movie {
 }
 
 module.exports = {
-  Movie
-}
+  Movie,
+};

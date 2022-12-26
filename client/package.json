@@ -23,7 +23,8 @@
     "react-scripts": "5.0.1",
     "react-share": "^4.4.0",
     "storybook-addon-material-ui": "^0.9.0-alpha.24",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "prop-types": "^15.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,22 +33,6 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
   },
   "browserslist": {
     "production": [
@@ -74,7 +59,6 @@
     "@storybook/testing-library": "^0.0.11",
     "@testing-library/react-hooks": "^8.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "prop-types": "^15.8.1",
     "webpack": "^5.72.1"
   }
 }

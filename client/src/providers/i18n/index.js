@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
-import flatten from 'flat'
+import flatten from 'flat';
 
 import { LOCALES } from '../../constants';
 import messages from '../../messages';
@@ -14,9 +14,7 @@ const Provider = ({ children, locale = LOCALES.ENGLISH }) => (
   >
     {children}
   </IntlProvider>
-)
-
-
+);
 
 Provider.displayName = 'I18nProvider';
 

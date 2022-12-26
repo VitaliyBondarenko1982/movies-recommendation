@@ -6,7 +6,7 @@ export const saveToStorage = (name, data) => {
   window.localStorage.setItem(name, JSON.stringify(data));
 };
 
-export const getFromStorage = (name) => {
+export const getFromStorage = name => {
   if (!window || !window.localStorage) {
     return null;
   }

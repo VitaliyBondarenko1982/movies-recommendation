@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['standard', 'react-app', 'airbnb'],
+  extends: ['standard', 'react-app', 'airbnb', 'prettier'],
   env: {
     es6: true,
     browser: true,
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'prettier'],
   overrides: [
     {
       files: ['**/*.stories.*'],
@@ -33,7 +33,14 @@ module.exports = {
     ],
     semi: ['error', 'always'],
     'semi-style': ['error', 'last'],
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
     'no-var': 'error',
     'prefer-const': 'error',
     curly: ['error', 'all'],
@@ -46,10 +53,11 @@ module.exports = {
         allowTaggedTemplates: false,
       },
     ],
+    'arrow-parens': ['error', 'as-needed'],
     'operator-linebreak': ['error', 'before'],
-    'no-console': 'error',
     'standard/no-callback-literal': 0,
     'brace-style': ['error', '1tbs'],
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'object-curly-newline': [
       2,
       {
@@ -59,7 +67,6 @@ module.exports = {
         },
       },
     ],
-    'function-paren-newline': ['error', 'consistent'],
     'comma-dangle': [
       'error',
       {
@@ -117,6 +124,14 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'no-param-reassign': [2, { props: true }],
     'no-shadow': ['error', { builtinGlobals: false }],
     'react/destructuring-assignment': 0,
@@ -131,6 +146,7 @@ module.exports = {
       },
     ],
     'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
+    'react/jsx-props-no-spreading': 'off',
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'return' },

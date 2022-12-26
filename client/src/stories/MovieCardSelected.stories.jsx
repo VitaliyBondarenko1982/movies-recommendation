@@ -8,10 +8,10 @@ export default {
   component: MovieCardSelected,
 };
 
-const Template = (args) => <MovieCardSelected {...args} />;
+const Template = args => <MovieCardSelected {...args} />;
 
 export const Primary = Template.bind({});
 
 Primary.args = {
-  movie: movies[0]
+  movie: movies[0],
 };

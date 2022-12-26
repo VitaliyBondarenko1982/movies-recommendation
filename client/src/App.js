@@ -1,10 +1,6 @@
 import { useContext } from 'react';
 import { Container, CssBaseline, Box } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import { Navigation } from './components';
-import { Home, Settings, Recommend } from './pages';
-import { AppContext } from './providers/appContext';
-import I18nProvider from './providers/i18n'
 import {
   ApolloClient,
   InMemoryCache,
@@ -12,24 +8,24 @@ import {
   HttpLink,
   ApolloLink,
   from,
-} from "@apollo/client";
+} from '@apollo/client';
+import { Navigation } from './components';
+import { Home, Settings, Recommend } from './pages';
+import { AppContext } from './providers/appContext';
+import I18nProvider from './providers/i18n';
 import getUri from './utils/getUri';
 
-function App() {
+const App = () => {
   const { state } = useContext(AppContext);
   const httpLink = new HttpLink({ uri: getUri(process.env.NODE_ENV) });
   const localeMiddleware = new ApolloLink((operation, forward) => {
-    const customHeaders = operation
-      .getContext()
-      .hasOwnProperty("headers")
-        ? operation.getContext().headers
-        : {};
+    const customHeaders = operation.getContext().headers || {};
 
     operation.setContext({
       headers: {
         ...customHeaders,
-        locale: state.locale
-      }
+        locale: state.locale,
+      },
     });
 
     return forward(operation);
@@ -38,7 +34,7 @@ function App() {
   const client = new ApolloClient({
     link: from([localeMiddleware, httpLink]),
     cache: new InMemoryCache(),
-    connectToDevTools: true
+    connectToDevTools: true,
   });
 
   return (
@@ -48,15 +44,15 @@ function App() {
         <Navigation />
         <Box
           sx={{
-            backgroundColor: (theme) => theme.palette.grey[100]
+            backgroundColor: theme => theme.palette.grey[100],
           }}
         >
-          <Container maxWidth='xl'>
+          <Container maxWidth="xl">
             <Routes>
-              <Route path='/'>
+              <Route path="/">
                 <Route index element={<Home />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route path='/recommend' element={<Recommend />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/recommend" element={<Recommend />} />
               </Route>
             </Routes>
           </Container>
@@ -64,6 +60,6 @@ function App() {
       </ApolloProvider>
     </I18nProvider>
   );
-}
+};
 
 export default App;

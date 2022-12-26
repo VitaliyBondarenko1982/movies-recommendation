@@ -7,7 +7,7 @@ export default {
   component: ConfirmModal,
 };
 
-const Template = (args) => <ConfirmModal {...args} />;
+const Template = args => <ConfirmModal {...args} />;
 
 export const Primary = Template.bind({});
 
@@ -15,5 +15,5 @@ Primary.args = {
   open: true,
   url: 'http://localhost/recommend?title=my_movies&ids=232,434',
   title: 'My favourite movies',
-  onClose: () => {}
+  onClose: () => {},
 };

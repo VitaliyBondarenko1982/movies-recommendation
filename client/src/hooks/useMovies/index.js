@@ -4,30 +4,34 @@ import { MAX_SELECTED_MOVIES } from '../../constants';
 const useMovies = () => {
   const [selectedMovies, setSelectedMovies] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => {}, []);
 
-  }, [])
+  const selectMovie = useCallback(
+    movie => () => {
+      const isMovieExist = !!selectedMovies.find(({ id }) => id === movie.id);
+      const selectedLength = selectedMovies.length;
 
-  const selectMovie = useCallback(movie => () => {
-    const isMovieExist = !!selectedMovies.find(({ id }) => id === movie.id);
-    const selectedLength = selectedMovies.length;
+      if (isMovieExist || selectedLength >= MAX_SELECTED_MOVIES) {
+        return;
+      }
 
-    if (isMovieExist || selectedLength >= MAX_SELECTED_MOVIES ) {
-      return;
-    }
+      setSelectedMovies([movie, ...selectedMovies]);
+    },
+    [selectedMovies],
+  );
 
-    setSelectedMovies([movie, ...selectedMovies])
-  }, [selectedMovies]);
-
-  const deleteMovie = useCallback(movie => () => {
-    setSelectedMovies(selectedMovies.filter(({ id }) => id !== movie.id));
-  }, [selectedMovies])
+  const deleteMovie = useCallback(
+    movie => () => {
+      setSelectedMovies(selectedMovies.filter(({ id }) => id !== movie.id));
+    },
+    [selectedMovies],
+  );
 
   return {
     selectedMovies,
     selectMovie,
-    deleteMovie
-  }
-}
+    deleteMovie,
+  };
+};
 
 export default useMovies;

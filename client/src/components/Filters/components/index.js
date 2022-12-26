@@ -13,5 +13,5 @@ export {
   YearField,
   SubmitField,
   ReleaseYearField,
-  GenreField
-}
+  GenreField,
+};

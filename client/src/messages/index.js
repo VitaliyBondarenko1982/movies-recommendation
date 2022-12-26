@@ -1,7 +1,9 @@
 import en from './en-US';
 import uk from './uk-UA';
 
-export default {
+const messages = {
   ...en,
-  ...uk
+  ...uk,
 };
+
+export default messages;

@@ -9,27 +9,33 @@ export const useFilters = () => {
     includeAdult: false,
   });
 
-  const setPage = useCallback((page) => {
-    setFilterFields({
-      ...filter,
-      page
-    })
-  }, [filter])
+  const setPage = useCallback(
+    page => {
+      setFilterFields({
+        ...filter,
+        page,
+      });
+    },
+    [filter],
+  );
 
-  const setFilter = useCallback((filterFields) => {
-    setFilterFields({
-      ...filter,
-      ...filterFields,
-      year: +filterFields.year ,
-      primaryReleaseYear: +filterFields.primaryReleaseYear
-    })
-  }, [filter])
+  const setFilter = useCallback(
+    filterFields => {
+      setFilterFields({
+        ...filter,
+        ...filterFields,
+        year: +filterFields.year,
+        primaryReleaseYear: +filterFields.primaryReleaseYear,
+      });
+    },
+    [filter],
+  );
 
   return {
     filter,
     setPage,
-    setFilter
-  }
-}
+    setFilter,
+  };
+};
 
 export default useFilters;
