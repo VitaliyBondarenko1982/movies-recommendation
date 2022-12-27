@@ -1,65 +1,25 @@
-import { useContext } from 'react';
-import { Container, CssBaseline, Box } from '@mui/material';
-import { Routes, Route } from 'react-router-dom';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  HttpLink,
-  ApolloLink,
-  from,
-} from '@apollo/client';
-import { Navigation } from './components';
-import { Home, Settings, Recommend } from './pages';
-import { AppContext } from './providers/appContext';
-import I18nProvider from './providers/i18n';
-import getUri from './utils/getUri';
+import logo from './logo.svg';
+import './App.css';
 
-const App = () => {
-  const { state } = useContext(AppContext);
-  const httpLink = new HttpLink({ uri: getUri(process.env.NODE_ENV) });
-  const localeMiddleware = new ApolloLink((operation, forward) => {
-    const customHeaders = operation.getContext().headers || {};
-
-    operation.setContext({
-      headers: {
-        ...customHeaders,
-        locale: state.locale,
-      },
-    });
-
-    return forward(operation);
-  });
-
-  const client = new ApolloClient({
-    link: from([localeMiddleware, httpLink]),
-    cache: new InMemoryCache(),
-    connectToDevTools: true,
-  });
-
+function App() {
   return (
-    <I18nProvider locale={state.locale}>
-      <ApolloProvider client={client}>
-        <CssBaseline />
-        <Navigation />
-        <Box
-          sx={{
-            backgroundColor: theme => theme.palette.grey[100],
-          }}
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <Container maxWidth="xl">
-            <Routes>
-              <Route path="/">
-                <Route index element={<Home />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/recommend" element={<Recommend />} />
-              </Route>
-            </Routes>
-          </Container>
-        </Box>
-      </ApolloProvider>
-    </I18nProvider>
+          Learn React
+        </a>
+      </header>
+    </div>
   );
-};
+}
 
 export default App;
