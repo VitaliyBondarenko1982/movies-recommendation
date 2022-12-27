@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['standard', 'react-app', 'airbnb', 'prettier'],
+  extends: ['airbnb', 'plugin:react/recommended', 'prettier'],
   env: {
     es6: true,
     browser: true,
@@ -7,16 +7,19 @@ module.exports = {
   parser: '@babel/eslint-parser',
   parserOptions: {
     requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-react'],
+    },
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['import', 'react', 'react-hooks'],
   overrides: [
     {
-      files: ['**/*.stories.*'],
+      files: ['**/*.stories.{js, jsx}'],
       rules: {
         'import/no-anonymous-default-export': 'off',
       },

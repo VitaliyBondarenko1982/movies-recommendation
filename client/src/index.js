@@ -7,6 +7,8 @@ import { AppContextProvider } from './providers/appContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const a = 5;
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -14,7 +16,7 @@ root.render(
         <App />
       </AppContextProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

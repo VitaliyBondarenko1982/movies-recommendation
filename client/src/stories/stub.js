@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-export const movies = [
+const movies = [
   {
     _id: '628d2fcc5b973031fbcacf3d',
     posterPath:
@@ -89,3 +89,5 @@ export const movies = [
     releaseDate: '2015-10-07T10:49:57 -03:00',
   },
 ];
+
+export default movies;
