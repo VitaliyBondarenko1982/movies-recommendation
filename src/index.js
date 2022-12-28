@@ -7,8 +7,6 @@ import { AppContextProvider } from './providers/appContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const a = 5;
-
 root.render(
   <React.StrictMode>
     <BrowserRouter>

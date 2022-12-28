@@ -112,10 +112,10 @@ const ConfirmModal = ({ open, url, title, onClose }) => {
 };
 
 ConfirmModal.propTypes = {
-  open: PropTypes.bool,
-  url: PropTypes.string,
-  title: PropTypes.string,
-  onClose: PropTypes.func,
+  open: PropTypes.bool.isRequired,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ConfirmModal;

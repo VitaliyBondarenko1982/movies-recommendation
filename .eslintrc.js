@@ -17,14 +17,6 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['import', 'react', 'react-hooks'],
-  overrides: [
-    {
-      files: ['**/*.stories.{js, jsx}'],
-      rules: {
-        'import/no-anonymous-default-export': 'off',
-      },
-    },
-  ],
   rules: {
     'max-len': [
       'error',
@@ -56,8 +48,8 @@ module.exports = {
         allowTaggedTemplates: false,
       },
     ],
+    'no-unused-vars': 'error',
     'arrow-parens': ['error', 'as-needed'],
-    'operator-linebreak': ['error', 'before'],
     'standard/no-callback-literal': 0,
     'brace-style': ['error', '1tbs'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
@@ -164,4 +156,18 @@ module.exports = {
     ],
     'import/prefer-default-export': 0,
   },
+  overrides: [
+    {
+      files: ['**/*.stories.jsx'],
+      rules: {
+        'import/no-anonymous-default-export': 'off',
+      },
+    },
+    {
+      files: ['**/*.spec.js'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 };

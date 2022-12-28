@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MovieCard } from '../components';
-import { movies } from './stub';
+import movies from './stub';
 
 export default {
   title: 'Card/Movie card',
