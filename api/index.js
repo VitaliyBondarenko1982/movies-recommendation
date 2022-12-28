@@ -43,7 +43,7 @@ async function startApolloServer() {
   await server.start();
   server.applyMiddleware({ app, path: '/api/graphql' });
 
-  const BUILD_PATH = ['../client', 'build'];
+  const BUILD_PATH = ['..', 'build'];
   const PORT = process.env.PORT || process.env.REACT_APP_WEBSITE_PORT || 4000;
 
   app.use(express.static(path.join(__dirname, ...BUILD_PATH)));
