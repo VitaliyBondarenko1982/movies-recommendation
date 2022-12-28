@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "client/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": { "distDir": "build" }
     }
@@ -20,8 +20,8 @@
       {
         "src": "/static/(.*)",
         "headers": { "cache-control": "s-maxage=31536000, immutable" },
-        "dest": "client/static/$1"
+        "dest": "static/$1"
       },
-      { "src": "/(.*)", "dest": "client/index.html" }
+      { "src": "/(.*)", "dest": "index.html" }
   ]
 }
