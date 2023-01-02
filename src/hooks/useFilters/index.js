@@ -5,6 +5,7 @@ export const useFilters = () => {
   const [filter, setFilterFields] = useState({
     page: 1,
     sortBy: 'popularity',
+    genre: 0,
     sortDirection: SORT_DIRECTION.DESC,
     includeAdult: false,
   });
@@ -25,7 +26,6 @@ export const useFilters = () => {
         ...filter,
         ...filterFields,
         year: +filterFields.year,
-        primaryReleaseYear: +filterFields.primaryReleaseYear,
       });
     },
     [filter],

@@ -3,24 +3,32 @@ import { FormattedMessage } from 'react-intl';
 import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import PropTypes from 'prop-types';
 
-export const GenreField = ({ data }) => (
+const defaultGenre = { id: 0 };
+
+export const GenreField = ({ genres }) => (
   <Field
     name="genre"
     render={({ input }) => (
       <FormattedMessage id="filters.genre">
         {placeholder => (
-          <FormControl sx={{ m: 1, minWidth: 120 }}>
+          <FormControl
+            sx={{
+              m: 1,
+              minWidth: 120,
+            }}
+          >
             <InputLabel id="demo-simple-select-label">{placeholder}</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
+              size="small"
               autoWidth
               label={placeholder}
               {...input}
             >
-              {data.genres.map(({ name, id }) => (
+              {[defaultGenre, ...genres].map(({ name, id }) => (
                 <MenuItem key={id} value={id}>
-                  {name}
+                  {id ? name : <FormattedMessage id="filters.defaultGenre" />}
                 </MenuItem>
               ))}
             </Select>
@@ -32,10 +40,10 @@ export const GenreField = ({ data }) => (
 );
 
 GenreField.propTypes = {
-  data: PropTypes.shape({
-    genres: PropTypes.arrayOf({
-      id: PropTypes.string,
-      name: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };

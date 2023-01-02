@@ -13,6 +13,7 @@ export const YearField = () => (
         type="number"
         minvalue={1800}
         maxvalue={2030}
+        size="small"
         {...input}
       />
     )}

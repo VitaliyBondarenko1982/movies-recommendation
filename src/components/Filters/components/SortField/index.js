@@ -14,6 +14,7 @@ export const SortField = () => (
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
+              size="small"
               autoWidth
               label={placeholder}
               {...input}

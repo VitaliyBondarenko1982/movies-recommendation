@@ -38,7 +38,7 @@ const PlusIcon = styled(Box)(() => ({
   },
 }));
 
-const MovieCard = ({ movie, onCardSelect, isPreviewMode = false }) => (
+const MovieCard = ({ movie, onCardSelect, isPreviewMode }) => (
   <Card sx={{ maxWidth: 250, position: 'relative' }}>
     {!isPreviewMode && (
       <CardMenu>
@@ -72,6 +72,10 @@ const MovieCard = ({ movie, onCardSelect, isPreviewMode = false }) => (
   </Card>
 );
 
+MovieCard.defaultProps = {
+  isPreviewMode: false,
+};
+
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     posterPath: PropTypes.string.isRequired,
@@ -79,7 +83,7 @@ MovieCard.propTypes = {
     releaseDate: PropTypes.string,
   }).isRequired,
   onCardSelect: PropTypes.func.isRequired,
-  isPreviewMode: PropTypes.bool.isRequired,
+  isPreviewMode: PropTypes.bool,
 };
 
 export default MovieCard;

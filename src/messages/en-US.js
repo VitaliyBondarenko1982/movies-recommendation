@@ -19,6 +19,7 @@ const en = {
       year: 'Year',
       release_year: 'Release year',
       genre: 'Genre',
+      defaultGenre: 'All',
       submit: 'Submit',
       sort: {
         popularity: 'Popularity',

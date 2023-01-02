@@ -1,13 +1,12 @@
 import { Form } from 'react-final-form';
 import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import {
   SortField,
   SortDirectionField,
   YearField,
   SubmitField,
-  ReleaseYearField,
   GenreField,
 } from './components';
 import { GENRES_QUERY } from './queries';
@@ -24,7 +23,7 @@ const Filters = ({ onSubmit, initialValues }) => {
   }
 
   return (
-    <div>
+    <Box sx={{ p: 2 }}>
       <Form
         onSubmit={onSubmit}
         initialValues={initialValues}
@@ -38,24 +37,19 @@ const Filters = ({ onSubmit, initialValues }) => {
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box mr={3}>
+                <Box mr={1}>
                   <YearField />
                 </Box>
 
-                <Box mr={3}>
-                  <ReleaseYearField />
+                <Box mr={1}>
+                  <GenreField genres={data.genres} />
                 </Box>
-
-                <Box mr={3}>
-                  <GenreField data={data} />
-                </Box>
-              </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box mr={3}>
+                <Box mr={1}>
                   <SortField />
                 </Box>
-
-                <SortDirectionField />
+                <Box>
+                  <SortDirectionField />
+                </Box>
               </Box>
             </Box>
             <Box>
@@ -64,7 +58,7 @@ const Filters = ({ onSubmit, initialValues }) => {
           </form>
         )}
       />
-    </div>
+    </Box>
   );
 };
 

@@ -19,6 +19,7 @@ const uk = {
       year: 'Рік',
       release_year: 'Рік випуску',
       genre: 'Жанр',
+      defaultGenre: 'Всі',
       submit: 'Пошук',
       sort: {
         popularity: 'Популярність',

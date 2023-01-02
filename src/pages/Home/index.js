@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Grid, Pagination, Paper } from '@mui/material';
+import { Box, Grid, Pagination, Paper, useMediaQuery } from '@mui/material';
 import { useQuery } from '@apollo/client';
 
 import { MovieCard, SelectedMoviesSection, Filters } from '../../components';
@@ -8,10 +8,12 @@ import { useFilters, useMovies } from '../../hooks';
 
 const Home = () => {
   const { filter, setPage, setFilter } = useFilters();
+  const { genre, ...restFilter } = filter;
   const { loading, error, data } = useQuery(getMoviesQuery, {
-    variables: { filter },
+    variables: { filter: genre ? filter : restFilter },
   });
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
+  const isMedium = useMediaQuery('(max-width: 899px)');
 
   const paginationHandler = (_, page) => {
     setPage(page);
@@ -28,6 +30,15 @@ const Home = () => {
     setFilter(filterData);
   };
 
+  const selectedMoviesJSX = (
+    <Grid item xs={12} md={4}>
+      <SelectedMoviesSection
+        selectedMovies={selectedMovies}
+        deleteMovie={deleteMovie}
+      />
+    </Grid>
+  );
+
   return (
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2}>
@@ -36,6 +47,7 @@ const Home = () => {
             <Filters onSubmit={onSubmit} initialValues={filter} />
           </Paper>
         </Grid>
+        {isMedium && selectedMoviesJSX}
         <Grid item xs={12} md={8}>
           <Paper>
             <Box sx={{ flexGrow: 1, padding: 1 }}>
@@ -63,12 +75,7 @@ const Home = () => {
             </Box>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={4}>
-          <SelectedMoviesSection
-            selectedMovies={selectedMovies}
-            deleteMovie={deleteMovie}
-          />
-        </Grid>
+        {!isMedium && selectedMoviesJSX}
       </Grid>
     </Box>
   );
