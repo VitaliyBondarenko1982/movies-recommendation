@@ -52,7 +52,7 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed'],
     'standard/no-callback-literal': 0,
     'brace-style': ['error', '1tbs'],
-    'no-console': ['error', { allow: ['warn', 'error'] }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'object-curly-newline': [
       2,
       {

@@ -15,7 +15,7 @@ const Filters = ({ onSubmit, initialValues }) => {
   const { loading, error, data } = useQuery(GENRES_QUERY);
 
   if (loading) {
-    return 'Loading ...';
+    return 'Loading...';
   }
 
   if (error) {

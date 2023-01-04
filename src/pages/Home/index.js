@@ -1,34 +1,32 @@
 import React from 'react';
-import { Box, Grid, Pagination, Paper, useMediaQuery } from '@mui/material';
-import { useQuery } from '@apollo/client';
+import { Box, Grid, IconButton, Pagination, Paper } from '@mui/material';
+import { TuneRounded as TuneRoundedIcon } from '@mui/icons-material';
 
 import { MovieCard, SelectedMoviesSection, Filters } from '../../components';
-import { getMoviesQuery } from './queries';
-import { useFilters, useMovies } from '../../hooks';
+import useHome from './useHome';
+import { ModalContainer } from '../../components/ModalContainer';
 
 const Home = () => {
-  const { filter, setPage, setFilter } = useFilters();
-  const { genre, ...restFilter } = filter;
-  const { loading, error, data } = useQuery(getMoviesQuery, {
-    variables: { filter: genre ? filter : restFilter },
-  });
-  const { selectedMovies, selectMovie, deleteMovie } = useMovies();
-  const isMedium = useMediaQuery('(max-width: 899px)');
-
-  const paginationHandler = (_, page) => {
-    setPage(page);
-  };
+  const {
+    loading,
+    error,
+    data,
+    isMedium,
+    isCompact,
+    isFiltersModal,
+    selectedMovies,
+    selectMovie,
+    deleteMovie,
+    onSubmit,
+    toggleFiltersModal,
+    filter,
+    pagesCount,
+    paginationHandler,
+  } = useHome();
 
   if (error) {
     return <div>Error!</div>;
   }
-
-  const pagesCount =
-    data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
-
-  const onSubmit = filterData => {
-    setFilter(filterData);
-  };
 
   const selectedMoviesJSX = (
     <Grid item xs={12} md={4}>
@@ -42,11 +40,17 @@ const Home = () => {
   return (
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Paper>
-            <Filters onSubmit={onSubmit} initialValues={filter} />
-          </Paper>
-        </Grid>
+        {isCompact ? (
+          <IconButton color="inherit" onClick={toggleFiltersModal}>
+            <TuneRoundedIcon fontSize="inherit" color="primary" />
+          </IconButton>
+        ) : (
+          <Grid item xs={12}>
+            <Paper>
+              <Filters onSubmit={onSubmit} initialValues={filter} />
+            </Paper>
+          </Grid>
+        )}
         {isMedium && selectedMoviesJSX}
         <Grid item xs={12} md={8}>
           <Paper>
@@ -77,6 +81,9 @@ const Home = () => {
         </Grid>
         {!isMedium && selectedMoviesJSX}
       </Grid>
+      <ModalContainer open={isFiltersModal} onClose={toggleFiltersModal}>
+        <Filters onSubmit={onSubmit} initialValues={filter} />
+      </ModalContainer>
     </Box>
   );
 };
