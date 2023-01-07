@@ -6,3 +6,4 @@ export { default as SelectedMoviesSection } from './SelectedMoviesSection';
 export { default as ConfirmModal } from './ConfirmModal';
 export { default as Filters } from './Filters';
 export { default as SocialShare } from './SocialShare';
+export { default as ModalContainer } from './ModalContainer';

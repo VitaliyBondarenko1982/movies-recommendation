@@ -18,50 +18,9 @@ module.exports = {
   },
   plugins: ['import', 'react', 'react-hooks'],
   rules: {
-    'max-len': [
-      'error',
-      {
-        code: 80,
-        comments: 80,
-        ignoreTemplateLiterals: true,
-      },
-    ],
-    semi: ['error', 'always'],
-    'semi-style': ['error', 'last'],
-    'space-before-function-paren': [
-      'error',
-      {
-        anonymous: 'never',
-        named: 'never',
-        asyncArrow: 'always',
-      },
-    ],
-    'no-var': 'error',
-    'prefer-const': 'error',
-    curly: ['error', 'all'],
-    'no-redeclare': ['error', { builtinGlobals: true }],
-    'no-unused-expressions': [
-      'error',
-      {
-        allowShortCircuit: false,
-        allowTernary: false,
-        allowTaggedTemplates: false,
-      },
-    ],
-    'no-unused-vars': 'error',
+    // js
     'arrow-parens': ['error', 'as-needed'],
-    'standard/no-callback-literal': 0,
     'brace-style': ['error', '1tbs'],
-    'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'object-curly-newline': [
-      2,
-      {
-        ObjectExpression: {
-          consistent: true,
-          minProperties: 4,
-        },
-      },
-    ],
     'comma-dangle': [
       'error',
       {
@@ -72,6 +31,8 @@ module.exports = {
         functions: 'always-multiline',
       },
     ],
+    curly: ['error', 'all'],
+    'import/prefer-default-export': 0,
     indent: [
       'error',
       2,
@@ -118,30 +79,38 @@ module.exports = {
         ignoreComments: false,
       },
     ],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/react-in-jsx-scope': 'off',
-    'react/function-component-definition': [
-      2,
+    'max-len': [
+      'error',
       {
-        namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function',
+        code: 80,
+        comments: 80,
+        ignoreTemplateLiterals: true,
       },
     ],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-param-reassign': [2, { props: true }],
+    'no-redeclare': ['error', { builtinGlobals: true }],
+    'no-restricted-exports': ['error', { restrictedNamedExports: [] }],
     'no-shadow': ['error', { builtinGlobals: false }],
-    'react/destructuring-assignment': 0,
-    'jsx-a11y/label-has-for': [
-      2,
+    'no-unused-expressions': [
+      'error',
       {
-        components: ['Label'],
-        required: {
-          some: ['id', 'nesting'],
-        },
-        allowChildren: true,
+        allowShortCircuit: false,
+        allowTernary: false,
+        allowTaggedTemplates: false,
       },
     ],
-    'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
-    'react/jsx-props-no-spreading': 'off',
+    'no-unused-vars': 'error',
+    'no-var': 'error',
+    'object-curly-newline': [
+      2,
+      {
+        ObjectExpression: {
+          consistent: true,
+          minProperties: 4,
+        },
+      },
+    ],
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'return' },
@@ -154,7 +123,44 @@ module.exports = {
       { blankLine: 'always', prev: 'directive', next: '*' },
       { blankLine: 'always', prev: 'block-like', next: '*' },
     ],
-    'import/prefer-default-export': 0,
+    'prefer-const': 'error',
+    semi: ['error', 'always'],
+    'semi-style': ['error', 'last'],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'never',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
+    'standard/no-callback-literal': 0,
+
+    // react
+    'react/destructuring-assignment': 0,
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'react/jsx-filename-extension': [1, { extensions: ['.jsx'] }],
+    'react/jsx-props-no-spreading': 'off',
+    'react/react-in-jsx-scope': 'off',
+
+    // jsx-a11y
+    'jsx-a11y/label-has-for': [
+      2,
+      {
+        components: ['Label'],
+        required: {
+          some: ['id', 'nesting'],
+        },
+        allowChildren: true,
+      },
+    ],
+    'jsx-a11y/label-has-associated-control': [2, { assert: 'either' }],
   },
   overrides: [
     {

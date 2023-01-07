@@ -1,15 +1,6 @@
-import { SortField } from './SortField';
-import { SortDirectionField } from './SortDirectionField';
-import { AdultField } from './AdultField';
-import { YearField } from './YearField';
-import { SubmitField } from './SubmitField';
-import { GenreField } from './GenreField';
-
-export {
-  SortField,
-  SortDirectionField,
-  AdultField,
-  YearField,
-  SubmitField,
-  GenreField,
-};
+export { default as SortField } from './SortField';
+export { default as SortDirectionField } from './SortDirectionField';
+export { default as AdultField } from './AdultField';
+export { default as YearField } from './YearField';
+export { default as SubmitField } from './SubmitField';
+export { default as GenreField } from './GenreField';
